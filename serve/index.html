@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Analytics Viewer</title>
+
+
+  <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css'>
+  <link rel="stylesheet" href="css/style.css">
+  <script src='https://cdn.jsdelivr.net/npm/vue'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.23.0/moment.min.js"></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js'></script>
+</head>
+
+<body>
+
+  <div class="container" id="app">
+    <h1>Analytics for "{{domain}}"</h1>
+    <h5>total requests: {{reqs}}</h5>
+    <h5>total ips: {{ips}}</h5>
+
+    <div class="row">
+      <div class="col-md-4 col-sm-12">
+        <h4>Common Paths</h4>
+        <table>
+          <tr>
+            <th>Path</th>
+            <th>Count</th>
+          </tr>
+          <tr v-for="path in paths">
+            <td>{{path.path}}</td>
+            <td>{{path["COUNT(path)"]}}</td>
+          </tr>
+
+        </table>
+      </div>
+      <br>
+      <div class="col-md-4 col-sm-12">
+        <h4>Most Used Browsers</h4>
+        <table>
+          <tr>
+            <th>Browser</th>
+            <th>Count</th>
+          </tr>
+          <tr v-for="browser in browsers">
+            <td>{{browser.browser}}</td>
+            <td>{{browser["COUNT(browser)"]}}</td>
+          </tr>
+
+        </table>
+      </div>
+      <br>
+      <div class="col-md-4 col-sm-12">
+        <h4>Countries</h4>
+        <table>
+          <tr>
+            <th>Country Code</th>
+            <th>Count</th>
+          </tr>
+          <tr v-for="country in countries">
+            <td>{{country.country}}</td>
+            <td>{{country["COUNT(country)"]}}</td>
+          </tr>
+
+        </table>
+      </div>
+      <br>
+      <div class="col-md-4 col-sm-12">
+        <h4>Operating Systems</h4>
+        <table>
+          <tr>
+            <th>OS</th>
+            <th>Count</th>
+          </tr>
+          <tr v-for="osi in os">
+            <td>{{osi.os}}</td>
+            <td>{{osi["COUNT(os)"]}}</td>
+          </tr>
+
+        </table>
+      </div>
+      <br>
+      <div class="col-sm-12">
+        <br>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Display Graph For Past</span>
+          </div>
+          <input type="text" class="form-control" v-model="hours">
+          <div class="input-group-append">
+            <span class="input-group-text">Hour</span>
+            <button class="btn btn-primary" type="button" onclick="loadRequests()">Get Records</button>
+          </div>
+        </div>
+        <canvas id="reqHours" style="width:100%"></canvas>
+      </div>
+    </div>
+  </div>
+  <script src="js/index.js"></script>
+
+  <img src="https://a.hampton.pw/funnyCatPhoto.gif" style="position:absolute; top:0; left:0">
+
+</body>
+
+</html>

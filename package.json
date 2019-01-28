@@ -1,0 +1,19 @@
+{
+  "name": "analytics",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Hampton Moore",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^6.2.0",
+    "express": "^4.16.4",
+    "express-useragent": "^1.0.12",
+    "geoip-lite": "^1.3.5",
+    "mysql": "^2.16.0",
+    "url-parse": "^1.4.4"
+  }
+}
